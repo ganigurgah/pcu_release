@@ -1,9 +1,10 @@
 ---
-name: "💡 Özellik Önerisi (Feature Request)"
+name: "\U0001F4A1 Özellik Önerisi (Feature Request)"
 about: PCU için yeni bir fikir veya geliştirme önerin.
 title: "[FİKİR] - "
-labels: enhancement
+labels: enhancement, question
 assignees: ganigurgah
+
 ---
 
 **İhtiyaç Nedir?**

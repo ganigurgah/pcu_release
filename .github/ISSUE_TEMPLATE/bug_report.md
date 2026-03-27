@@ -1,9 +1,10 @@
 ---
-name: "🐞 Hata Bildirimi (Bug Report)"
+name: "\U0001F41E Hata Bildirimi (Bug Report)"
 about: PCU ile ilgili bir hatayı bildirin.
 title: "[BUG] - "
-labels: bug
+labels: bug, duplicate, enhancement
 assignees: ganigurgah
+
 ---
 
 **Hata Tanımı**
