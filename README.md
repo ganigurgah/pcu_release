@@ -22,6 +22,29 @@ Geleneksel asistanların aksine PCU, **Local-First (Önce Yerel)** felsefesiyle 
 
 ---
 
+## ⚙️ Nasıl Çalışır? (Teknik Mimari)
+
+PCU bir "Orkestra Şefi" gibi çalışır. Girdiğiniz her komut önce bir sınıflandırıcıdan geçer ve ardından en uygun motora (Sistem, LLM veya Agent) yönlendirilir.
+
+<details>
+<summary><b>🔍 Mimari Şemayı Görüntüle (Mermaid)</b></summary>
+
+```mermaid
+graph TD
+    User((Kullanıcı)) -->|Doğal Dil / Ses| PCU[PCU Web/Terminal]
+    PCU --> Classifier{Classifier}
+    Classifier -->|BILGISAYAR| SysCmd[Sistem Komutları]
+    Classifier -->|SORU/ARAMA| LLM[LLM Engine]
+    Classifier -->|GELISTIRME| AG[Claude / Gemini / Your Choice]
+    LLM --> WebSearch[Web Search]
+    LLM --> Memory[(Smart Memory)]
+    SysCmd --> OS[Linux/MacOS/Windows]
+    AG --> Codebase[Kaynak Kod]
+```
+</details>
+
+---
+
 ## ✨ Öne Çıkan Özellikler
 
 <table border="0">
@@ -79,12 +102,20 @@ chmod +x install_pcu.sh && ./install_pcu.sh
 
 ## ⌨️ Temel Kullanım
 
-Arayüzü açmak için tarayıcınızdan `http://localhost:8765` adresine gidin ve komut vermeye başlayın:
+Arayüzü açmak için tarayıcınızdan `http://localhost:8765` adresine gidin ve komut vermeye başlayın. PCU hem teknik komutları hem de günlük konuşma dilini anlar:
 
+### 🗣️ Doğal Dil Örnekleri
+*   *"PCU, mail hazırla"* — E-posta istemcinizi otomatik açar.
+*   *"WhatsApp'tan günaydın yaz"* — Mesajınız hazır şekilde Web WhatsApp'ı açar.
+*   *"5 dakika sonra çayı kontrol et diye hatırlat"* — Masaüstü bildirimi gönderir.
+*   *"Nvidia hisselerindeki son durumu ara ve özetle"* — Web'den güncel veriyi çekip sunar.
+*   *"Yarın sabah 10:00 için toplantı ekle ve şu kişilere mail gönder"* — Takviminize toplantıyı ekler ve katılımcılara otomatik davetiye iletir.
+
+### 🛠️ Teknik Komutlar & Prefiksler
 *   `! ls -la` — Doğrudan terminal komutu çalıştırır.
 *   `@ag bu projedeki hataları bul` — Antigravity (Claude) motorunu tetikler.
-*   `bunu hatırla: yarın sabah 09:00 toplantım var` — Kalıcı hafızaya kaydeder.
-*   `/status` — Sistem raporunu Pasta Grafik olarak sunar.
+*   `bunu hatırla: Ofisimin adresi Levent/İstanbul` — Kalıcı hafızaya kaydeder.
+*   `/status` — Sistem performansını grafik olarak sunar.
 
 ---
 
